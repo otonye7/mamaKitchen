@@ -3,12 +3,7 @@ import {Searchbar} from 'react-native-paper';
 import ResturantInfo from '../components/resturant-info.component';
 import styled from 'styled-components/native';
 import { FlatList, SafeAreaView, StatusBar} from 'react-native';
-
-const SafeArea = styled(SafeAreaView) `
-  flex: 1;
-  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
-  //it means if status bar has a value hence the && then add a margin-top of StatusBar.currentHeight
-`
+import {SafeArea} from '../../../components/utilities/safe-area.component';
 
 const SearchContainer = styled.View `
   background-color: white;
@@ -22,7 +17,7 @@ const ResturantListContainer = styled.View `
 
 const ResturantScreen = () => {
   return (
-    <SafeAreaView >
+    <SafeArea >
     <SearchContainer >
        <Searchbar />
     </SearchContainer>
@@ -35,7 +30,7 @@ const ResturantScreen = () => {
      {/* <ResturantListContainer>
         <ResturantInfo />
      </ResturantListContainer> */}
-  </SafeAreaView>
+  </SafeArea>
   )
     
 }
