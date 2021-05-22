@@ -2,7 +2,7 @@ import React from 'react';
 import {Searchbar} from 'react-native-paper';
 import ResturantInfo from '../components/resturant-info.component';
 import styled from 'styled-components/native';
-import { StyleSheet, Text, View, SafeAreaView, StatusBar, Platform } from 'react-native';
+import { FlatList, SafeAreaView, StatusBar} from 'react-native';
 
 const SafeArea = styled(SafeAreaView) `
   flex: 1;
@@ -26,9 +26,15 @@ const ResturantScreen = () => {
     <SearchContainer >
        <Searchbar />
     </SearchContainer>
-     <ResturantListContainer>
+    <FlatList 
+       data={[{name: 1}, {name: 2}, {name: 3}, {name: 4}, {name: 5}, {name: 6}, {name: 7}, {name: 8}]}
+       renderItem={() => <ResturantInfo />}
+       keyExtractor={(item) => item.name}
+       contentContainerStyle={{padding:16}}
+    />
+     {/* <ResturantListContainer>
         <ResturantInfo />
-     </ResturantListContainer>
+     </ResturantListContainer> */}
   </SafeAreaView>
   )
     

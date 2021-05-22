@@ -3,7 +3,9 @@ import { StyleSheet, Text, View} from 'react-native';
 import styled from 'styled-components/native';
 import {Card} from 'react-native-paper';
 import {SvgXml} from 'react-native-svg';
+import {Spacer} from '../../../components/spacer/spacer.component' ;
 import star from '../../../../assets/star';
+import open from '../../../../assets/open';
 
 
 const Title = styled.Text `
@@ -22,6 +24,7 @@ const Address = styled.Text `
 
 const ResturantCard = styled(Card) `
   background-color: white;
+  margin-bottom: ${(props) => props.theme.space[3]}; 
 `;
 
 const ResturantCardCover = styled(Card.Cover) `
@@ -33,6 +36,22 @@ const Info = styled.View `
    padding: ${(props) => props.theme.space[2]};
 `;
 
+const Rating = styled.View `
+   flex-direction: row;
+   padding: ${(props) => props.theme.space[2]};
+`;
+
+const Section = styled.View `
+   flex-direction: row;
+   align-items: center;
+`;
+
+const SectionEnd = styled.View `
+    flex: 1;
+    flex-direction: row;
+    justify-content: flex-end;
+`;
+
 const ResturantInfo = ({resturants = {}}) => {
     const {
         name = 'Mamas Kitchen',
@@ -42,13 +61,31 @@ const ResturantInfo = ({resturants = {}}) => {
         openingHours= true,
         ratings = 5,
         isClosedTemporarily='null'
-    } = resturants
+    } = resturants;
+
+    const ratingArray = Array.from(new Array(Math.floor(ratings)))
+    
+
     return(
         <ResturantCard elevation={5} >
             <ResturantCardCover key={name} source={{ uri: photos[0] }} />
             <Info>
                 <Title>{name}</Title>
-                <SvgXml xml={star} width={20} height={20}/>
+                <Section>
+                <Rating>
+                {
+                    ratingArray.map(() => (
+                       <SvgXml xml={star} width={20} height={20}/>  
+                    ))
+                }
+                </Rating>
+                <SectionEnd>
+                    { isClosedTemporarily && <Text variant='label' style={{color: 'red'}}>CLOSED TEMPORAILY</Text>}
+                    <Spacer position='left' size='small'/>
+                    { openingHours && <SvgXml xml={open} width={20} height={20} /> }
+                    <Spacer position='left' size='small' />
+                </SectionEnd>
+                </Section>
                 <Address>{address}</Address>
             </Info>
           
