@@ -12,6 +12,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SafeArea} from './src/components/utilities/safe-area.component';
 import {Ionicons} from '@expo/vector-icons';
+import {resturantRequest} from './src/services/resturants/resturant.service';
 
 const Tab = createBottomTabNavigator();
 
