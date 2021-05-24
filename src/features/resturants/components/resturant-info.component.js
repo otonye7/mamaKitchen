@@ -52,7 +52,7 @@ const SectionEnd = styled.View `
     justify-content: flex-end;
 `;
 
-const ResturantInfo = ({resturants = {}}) => {
+const ResturantInfo = ({resturant = {}}) => {
     const {
         name = 'Mamas Kitchen',
         icon,
@@ -61,7 +61,7 @@ const ResturantInfo = ({resturants = {}}) => {
         openingHours= true,
         ratings = 5,
         isClosedTemporarily='null'
-    } = resturants;
+    } = resturant;
 
     const ratingArray = Array.from(new Array(Math.floor(ratings)))
     

@@ -17,21 +17,25 @@ const ResturantListContainer = styled.View `
 
 
 const ResturantScreen = () => {
-   const resturantContext = useContext(ResturantContext);
+   const {isLoading, error, resturants} = useContext(ResturantContext);
+  
   return (
     <SafeArea >
     <SearchContainer >
        <Searchbar />
     </SearchContainer>
     <FlatList 
-       data={resturantContext.resturants}
-       renderItem={() => <ResturantInfo />}
+       data={resturants}
+       renderItem={({item}) => {
+         
+          return (
+               <ResturantInfo resturant={item}/>
+             
+          )
+       }}
        keyExtractor={(item) => item.name}
        contentContainerStyle={{padding:16}}
     />
-     {/* <ResturantListContainer>
-        <ResturantInfo />
-     </ResturantListContainer> */}
   </SafeArea>
   )
     
