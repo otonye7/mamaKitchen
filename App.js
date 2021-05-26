@@ -13,6 +13,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SafeArea} from './src/components/utilities/safe-area.component';
 import {Ionicons} from '@expo/vector-icons';
 import { ResturantContextProvider} from './src/services/resturants/resturant.context';
+import { LocationContextProvider, locationContextProvider} from './src/services/location/location.context';
 
 const Tab = createBottomTabNavigator();
 
@@ -45,6 +46,7 @@ export default function App() {
   return (
     <>
     <ThemeProvider theme={theme}>
+      <LocationContextProvider>
       <ResturantContextProvider>
       <NavigationContainer>
         <Tab.Navigator
@@ -74,6 +76,7 @@ export default function App() {
         </Tab.Navigator>
       </NavigationContainer>
       </ResturantContextProvider>
+      </LocationContextProvider>
     </ThemeProvider>
   <ExpoStatusBar style='auto' />
   </>
