@@ -21,9 +21,6 @@ export const Search = () => {
               search(searchKeyboard)
           }}
           onChangeText={(text) => {
-              if(!text.length) {
-                return
-              }
               setSearchKeyboard(text)
           }}
           />
