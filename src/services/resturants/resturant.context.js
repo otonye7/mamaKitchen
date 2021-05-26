@@ -16,7 +16,7 @@ export const ResturantContextProvider = ({children}) => {
             .then((results) => {
                 setIsLoading(false);
                 setResturants(results);
-                console.log(results)
+                
             })
         }) 
     }
