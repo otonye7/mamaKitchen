@@ -60,6 +60,7 @@ const ResturantInfo = ({resturant = {}}) => {
         address = 'No 12 Admiralty Street off lekki phase 1',
         openingHours= true,
         ratings = 5,
+        placeId,
         isClosedTemporarily='null'
     } = resturant;
 
@@ -74,8 +75,8 @@ const ResturantInfo = ({resturant = {}}) => {
                 <Section>
                 <Rating>
                 {
-                    ratingArray.map(() => (
-                       <SvgXml xml={star} width={20} height={20}/>  
+                    ratingArray.map((_, i) => (
+                       <SvgXml key={`star-${placeId}-${i}`} xml={star} width={20} height={20}/>  
                     ))
                 }
                 </Rating>
